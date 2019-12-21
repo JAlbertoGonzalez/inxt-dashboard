@@ -10,10 +10,15 @@ import {
 import ClickOutside from 'react-click-outside'
 import styled from 'styled-components';
 
-import PageContacts from './PageContacts'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUsers, faHdd, faHome } from '@fortawesome/free-solid-svg-icons'
+
+
+import PageUsers from './PageUsers'
+import PageNodes from './PageNodes'
 
 const navWidthCollapsed = 64;
-const navWidthExpanded = 280;
+const navWidthExpanded = 250;
 
 const Main = styled.main`
     position: absolute;
@@ -62,25 +67,25 @@ class SideBar extends React.Component {
                                 <SideNav.Toggle />
                                 <SideNav.Nav defaultSelected="home">
                                     <NavItem eventKey="home">
-                                        <NavIcon><i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} /></NavIcon>
+                                        <NavIcon><FontAwesomeIcon icon={faHome} /></NavIcon>
                                         <NavText>Home</NavText>
                                     </NavItem>
-                                    <NavItem eventKey="contacts">
-                                        <NavIcon><i className="fa fa-fw fa-device" style={{ fontSize: '1.75em' }} /></NavIcon>
-                                        <NavText>Contacts</NavText>
+                                    <NavItem eventKey="users">
+                                        <NavIcon><FontAwesomeIcon icon={faUsers} /></NavIcon>
+                                        <NavText>Users</NavText>
                                     </NavItem>
-                                    <NavItem eventKey="nodes">
-                                        <NavIcon><i className="fa fa-fw fa-device" style={{ fontSize: '1.75em' }} /></NavIcon>
+                                    <NavItem eventKey="contacts">
+                                        <NavIcon><FontAwesomeIcon icon={faHdd} /></NavIcon>
                                         <NavText>Nodes</NavText>
                                     </NavItem>
                                 </SideNav.Nav>
                             </SideNav>
                         </ClickOutside>
                         <Main expanded={this.state.expanded}>
-                            <Route path="/" exact component={props => <PageContacts />} />
-                            <Route path="/contacts" component={props => <PageContacts />} />
+                            <Route path="/" exact component={props => <div>Home</div>} />
+                            <Route path="/users" component={props => <PageUsers />} />
+                            <Route path="/contacts" component={props => <PageNodes />} />
                         </Main>
-
                     </React.Fragment>
                 )}
                 />
