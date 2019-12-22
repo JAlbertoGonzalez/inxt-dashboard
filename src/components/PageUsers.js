@@ -38,10 +38,12 @@ const columns = [
                 case 1024 * 1024 * 1024 * 2:
                 case 0:
                     return "Free"
-                case 1024 * 1024 * 1024 * 100:
-                    return "100 GB"
-                case 1024 * 1024 * 1024 * 1024:
-                    return "1 TB"
+                case 1024 * 1024 * 1024 * 20:
+                    return "20 GB"
+                case 1024 * 1024 * 1024 * 200:
+                    return "200 GB"
+                case 1024 * 1024 * 1024 * 1024 * 2:
+                    return "2 TB"
                 default:
                     return "Error: " + PrettySize(cell)
             }
