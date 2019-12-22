@@ -16,6 +16,7 @@ import { faUsers, faHdd, faHome } from '@fortawesome/free-solid-svg-icons'
 
 import PageUsers from './PageUsers'
 import PageNodes from './PageNodes'
+import PageContact from './PageContact'
 
 const navWidthCollapsed = 64;
 const navWidthExpanded = 250;
@@ -50,9 +51,8 @@ class SideBar extends React.Component {
                     <React.Fragment>
                         <ClickOutside
                             onClickOutside={() => {
-                                this.setState({ expanded: false });
-                            }}
-                        >
+                                if (this.state.expanded) { this.setState({ expanded: false }); }
+                            }}>
 
                             <SideNav
                                 onSelect={(selected) => {
@@ -74,18 +74,21 @@ class SideBar extends React.Component {
                                         <NavIcon><FontAwesomeIcon icon={faUsers} /></NavIcon>
                                         <NavText>Users</NavText>
                                     </NavItem>
-                                    <NavItem eventKey="contacts">
+                                    <NavItem eventKey="nodes">
                                         <NavIcon><FontAwesomeIcon icon={faHdd} /></NavIcon>
                                         <NavText>Nodes</NavText>
                                     </NavItem>
                                 </SideNav.Nav>
                             </SideNav>
                         </ClickOutside>
-                        <Main expanded={this.state.expanded}>
+
+                        <Main expanded={this.state.expanded} style={{ overflow: 'scroll' }}>
                             <Route path="/" exact component={props => <div>Home</div>} />
                             <Route path="/users" component={props => <PageUsers />} />
-                            <Route path="/contacts" component={props => <PageNodes />} />
+                            <Route path="/nodes" component={props => <PageNodes />} />
+                            <Route path="/contact/:nodeid" component={props => <PageContact {...props} />} />
                         </Main>
+
                     </React.Fragment>
                 )}
                 />

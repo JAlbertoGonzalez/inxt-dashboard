@@ -1,16 +1,16 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
 
-class PageContacts extends React.Component {
+class PageUsers extends React.Component {
     constructor(props) {
         super(props)
     }
 
     render() {
         return <Container>
-            Holadfgshfgjghfj
+            Users
         </Container>
     }
 }
 
-export default PageContacts
+export default PageUsers
