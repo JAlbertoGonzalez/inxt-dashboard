@@ -17,6 +17,7 @@ import { faUsers, faHdd, faHome } from '@fortawesome/free-solid-svg-icons'
 import PageUsers from './PageUsers'
 import PageNodes from './PageNodes'
 import PageContact from './PageContact'
+import PageUser from './PageUser'
 
 const navWidthCollapsed = 64;
 const navWidthExpanded = 250;
@@ -87,6 +88,7 @@ class SideBar extends React.Component {
                             <Route path="/users" component={props => <PageUsers />} />
                             <Route path="/nodes" component={props => <PageNodes />} />
                             <Route path="/contact/:nodeid" component={props => <PageContact {...props} />} />
+                            <Route path="/user/:email" component={props => <PageUser {...props} />} />
                         </Main>
 
                     </React.Fragment>
