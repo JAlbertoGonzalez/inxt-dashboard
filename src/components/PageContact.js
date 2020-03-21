@@ -1,4 +1,5 @@
 import React from 'react'
+import { Container } from 'react-bootstrap'
 
 class PageContact extends React.Component {
     constructor(props) {
@@ -6,12 +7,34 @@ class PageContact extends React.Component {
         super(props)
 
         this.state = {
-            nodeid
+            nodeid,
+            data: null,
+            isLoading: true
         }
     }
 
+    componentDidMount() {
+        console.log('fetching data')
+        fetch('/api/contact/' + this.state.nodeid).then(async res => {
+            return { res, data: await res.json() }
+        }).then(({ res, data }) => {
+            console.log(data)
+            this.setState({
+                isLoading: false,
+                data
+            })
+        }).catch(err => {
+            this.setState({
+                isLoading: false
+            })
+        })
+    }
+
     render() {
-        return <div>Contact {this.state.nodeid}</div>
+        return <Container className="mt-3">
+            <h3>Contact {this.state.nodeid}</h3>
+            {JSON.stringify(this.state.data)}
+        </Container>
     }
 }
 

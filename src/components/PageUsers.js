@@ -66,7 +66,6 @@ class PageUsers extends React.Component {
         fetch('/api/users').then(async res => {
             return { res, data: await res.json() }
         }).then(({ res, data }) => {
-            console.log(data)
             this.setState({
                 isLoading: false,
                 data: data

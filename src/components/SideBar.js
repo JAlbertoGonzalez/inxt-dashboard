@@ -11,13 +11,15 @@ import ClickOutside from 'react-click-outside'
 import styled from 'styled-components';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUsers, faHdd, faHome } from '@fortawesome/free-solid-svg-icons'
+import { faUsers, faHdd, faHome, faServer, faMoneyCheckAlt } from '@fortawesome/free-solid-svg-icons'
 
 
 import PageUsers from './PageUsers'
 import PageNodes from './PageNodes'
 import PageContact from './PageContact'
 import PageUser from './PageUser'
+import PageServers from './PageServers'
+import PagePayments from './PagePayments'
 
 const navWidthCollapsed = 64;
 const navWidthExpanded = 250;
@@ -79,6 +81,14 @@ class SideBar extends React.Component {
                                         <NavIcon><FontAwesomeIcon icon={faHdd} /></NavIcon>
                                         <NavText>Nodes</NavText>
                                     </NavItem>
+                                    <NavItem eventKey="servers">
+                                        <NavIcon><FontAwesomeIcon icon={faServer} /></NavIcon>
+                                        <NavText>Servers</NavText>
+                                    </NavItem>
+                                    <NavItem eventKey="payments">
+                                        <NavIcon><FontAwesomeIcon icon={faMoneyCheckAlt} /></NavIcon>
+                                        <NavText>Payments</NavText>
+                                    </NavItem>
                                 </SideNav.Nav>
                             </SideNav>
                         </ClickOutside>
@@ -87,8 +97,10 @@ class SideBar extends React.Component {
                             <Route path="/" exact component={props => <div>Home</div>} />
                             <Route path="/users" component={props => <PageUsers />} />
                             <Route path="/nodes" component={props => <PageNodes />} />
+                            <Route path="/servers" component={props => <PageServers />} />
                             <Route path="/contact/:nodeid" component={props => <PageContact {...props} />} />
                             <Route path="/user/:email" component={props => <PageUser {...props} />} />
+                            <Route path="/payments" component={props => <PagePayments {...props} />} />
                         </Main>
 
                     </React.Fragment>

@@ -44,6 +44,12 @@ class PageNodes extends React.Component {
                         <th><FormControl></FormControl></th>
                         <th><FormControl></FormControl></th>
                     </tr>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th><label><Form.Control type="checkbox" /> Online</label></th>
+                    </tr>
                 </thead>
                 <tbody>
                     {this.state.contacts ?
