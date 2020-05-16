@@ -16,30 +16,22 @@ class PageUser extends React.Component {
     }
 
     componentDidMount() {
-        console.log('fetching data')
+        // User info
         fetch('/api/user/' + this.state.email).then(async res => {
             return { res, data: await res.json() }
         }).then(({ res, data }) => {
-            this.setState({
-                isLoading: false,
-                data
-            })
+            this.setState({ isLoading: false, data })
         }).catch(err => {
-            this.setState({
-                isLoading: false
-            })
+            this.setState({ isLoading: false })
         })
 
+        // User space usage
         fetch('/api/user/' + this.state.email + '/usage').then(async res => {
             return { res, data: await res.json() }
         }).then(({ res, data }) => {
-            this.setState({
-                usage: data.total
-            })
+            this.setState({ usage: data.total })
         }).catch(err => {
-            this.setState({
-                usage: 'Error'
-            })
+            this.setState({ usage: 'Error' })
         })
     }
 
@@ -50,14 +42,19 @@ class PageUser extends React.Component {
         return <div>
             <h3>Page user for {this.state.email}</h3>
             <div>Usage: {PrettySize(this.state.usage)} / {this.state.data && PrettySize(maxSpaceBytes)}</div>
-            <Button variant="info" onClick={() => {
+            <Button variant="info" block onClick={() => {
+            }}>Clean hidden files</Button>
+            <Button variant="info" block onClick={() => {
                 alert('Not working yet');
             }}>Clean files</Button>
-            <Button variant="danger" onClick={() => {
+            <Button variant="danger" block onClick={() => {
                 alert('Not working yet');
-            }}>Delete account</Button>
+            }}>Delete server account</Button>
+            <Button variant="danger" block onClick={() => {
+                alert('Not working yet');
+            }}>Delete bridge account</Button>
         </div>
-        }
     }
-    
+}
+
 export default PageUser
